@@ -110,6 +110,5 @@ Rule of thumb: One branch per meaningful piece of work (eg. 1 training session h
 ## When Things Go Wrong
 
 - Push rejected? git pull origin main first.
-- Merge conflicts? Edit files (choose which version to keep, or edit manually), commit & push again.
-- .meta conflicts common? Usually safe to keep "theirs" or "ours" based on who changed the asset last.
-- Still stuck? Run git status, screenshot errors, and open an Issue.
+- Merge conflicts? Edit files (choose which version to keep, or edit manually), commit & push again. Usually safe to keep "theirs" or "ours" based on who changed the asset last.
+- Still stuck? Run git status, screenshot errors, and ask excos.
