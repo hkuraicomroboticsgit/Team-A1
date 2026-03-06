@@ -1,6 +1,6 @@
 # Git & Unity Daily Workflow Practices
 
-Follow this routine **every single time** you work on the project to keep everything stable, avoid broken scenes/prefabs, and prevent merge hell.
+Follow this routine **every single time** you work on the project to keep everything stable.
 
 ## Core Rule #1: Close Unity Before Any Git Commands
 - **Always close Unity completely** before running `git pull`, `git add`, `git commit`, `git push`, or any other git operation.
