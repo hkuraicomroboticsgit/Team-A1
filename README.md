@@ -2,15 +2,20 @@
 
 Follow this routine **every single time** you work on the project to keep everything stable.
 
-## Core Rule #1: Close Unity Before Any Git Commands
-- **Always close Unity completely** before running `git pull`, `git add`, `git commit`, `git push`, or any other git operation.
-- Why? Unity locks files (especially in `Library/`, scenes, prefabs) and can cause .meta file desyncs or corruption if you git while the editor is open.
+## Core Rule #1: Develop on PC, Test on Robot
+- Always develop and edit code on your PC. The robot cannot access the internet, so transfer files to the robot only for testing.
+- If you make changes directly on the robot, transfer them back to your PC, then commit and push from there.
+- Why? This ensures all changes are tracked in Git on the PC, prevents desyncs, and maintains a clean history on GitHub.
 
-## Every Work Session: Step-by-Step Routine
+# Step-by-Step Routine
 
-1. **Start / Before touching anything**
-   - Open your terminal in the project folder (`PlayVision-Phrase1`).
-   - Make sure Unity is **closed**.
+## Part A. Pure Programming
+
+1. **Open Visual Studio Code**
+   - Open VS Code -> choose "open folder" -> choose the folder containing the repository
+   
+2. **Git pull (always do so before working)**
+   - Open your terminal in the project folder (eg. `Team-A1`).
    - Pull the latest changes from the remote:
      ```bash
      git pull origin your-branch
@@ -18,29 +23,13 @@ Follow this routine **every single time** you work on the project to keep everyt
    - If conflicts appear → resolve them carefully (see Troubleshooting below).
    - (Optional: Run git status to confirm clean working tree.)
 
-2. **Open Unity and work**
-   - Launch Unity Hub → open the project.
-   - Do your work: edit scripts, scenes, prefabs, assets, etc.
-   - Save frequently inside Unity (File → Save Project, or Ctrl+S on scenes/prefabs).
-
-3. **Finish working / Before leaving**
-   - In Unity: Save everything (scenes, project).
-   - Close Unity completely (important!).
-   - Back in terminal:
-     ```bash
-     git status
-     ```
-   - You should see modified/added files (scripts, .meta, prefabs, etc.).
-   - You should never see huge unexpected changes (if you do, something's wrong with .gitignore or LFS).
+3. **Go on to develop**
+   - Save frequently or enable auto-save in VS Code
 
 4. **Stage, commit & push**
    - Stage all changes:
      ```bash
      git add .
-     ```
-     or selectively: 
-     ```bash
-     git add Assets/Scripts/*.cs Assets/Scripts/*.cs.meta
      ```
    - Commit with a clear message:
      ```bash
@@ -52,7 +41,24 @@ Follow this routine **every single time** you work on the project to keep everyt
      git push origin your-branch
      ```
       - If push rejected (non-fast-forward), it means someone else pushed meanwhile. Git pull again, resolve, then push.
+    
+## Part B. Testing on Robot
 
+1. **Start session – on PC**
+   - Pull from github (follow the steps in A1)
+     
+2. **Transfer to robot**
+   - Copy needed folders/files to robot using a USB
+
+3. **Work on robot**
+   - Run experiments / training / testing
+
+4. **Transfer back to PC**
+   If you have editted the code on the robot, copy back to your PC into correct places.
+
+5. **Back on PC – commit changes**
+   - Push to github (follow the steps in A4).
+   
 ## When Things Go Wrong
 
 - Push rejected? git pull origin main first.
