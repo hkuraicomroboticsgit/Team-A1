@@ -98,6 +98,7 @@ Rule of thumb: One branch per meaningful piece of work (eg. 1 training session h
      # 5. (Optional – delete the branch)
      git branch -d new-branch
      git push origin --delete new-branch
+     ```
    
 ## When Things Go Wrong
 
