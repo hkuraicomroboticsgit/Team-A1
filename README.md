@@ -59,48 +59,45 @@ Follow this routine **every single time** you work on the project to keep everyt
 5. **Back on PC – commit changes**
    - Push to github (follow the steps in A4).
   
-3. Branching & Merging Strategy
-Rule of thumb: One branch per meaningful piece of work / robot session
-Naming Convention (recommended)
-texttype/short-description-YYYYMMDD-initials
-Examples:
+### Branching & Merging Strategy
+Rule of thumb: One branch per meaningful piece of work (eg. 1 training session homework)
 
-task-pick-cube-20260306-hk
-experiment/vision-only-grasp-20260307-jl
-feature/add-force-torque-sensor-20260308-team
-fix/joint-limit-bug-20260309-hk
+1. Creating a new branch
+   - You should start a new brach at each training session
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b new-branch
+   ```
 
-Creating a new branch
-Bash# From up-to-date main (safest)
-git checkout main
-git pull origin main
+3. Working on branch
+   - Commit often
+   - Push regularly so others can see progress
+   ```bash
+   git push origin new-branch
+   ```
 
-git checkout -b task-new-task-20260306-hk
-Working on branch
+4. Finishing & Merging
+   - When the task is completed and reviewed, merge back to main
+     ```bash
+        # 1. Make sure branch is up-to-date
+      git checkout new-branch
+      git pull origin tnew-branch
 
-Commit often (small logical changes)
-Push regularly so others can see progress:Bashgit push origin task-new-task-20260306-hk
+      # 2. Switch to target branch (usually main)
+      git checkout main
+      git pull origin main
 
-Finishing & Merging
-When the task/experiment is successful/stable and reviewed:
-Bash# 1. Make sure branch is up-to-date
-git checkout task-new-task-20260306-hk
-git pull origin task-new-task-20260306-hk
+      # 3. Merge (use --no-ff to keep history clear)
+      git merge new-branch --no-ff
+      # resolve conflicts if any
+      
+      # 4. Push integrated result
+      git push origin main
 
-# 2. Switch to target branch (usually main)
-git checkout main
-git pull origin main
-
-# 3. Merge (use --no-ff to keep history clear)
-git merge task-new-task-20260306-hk --no-ff
-# resolve conflicts if any
-
-# 4. Push integrated result
-git push origin main
-
-# 5. (Optional – cleanup)
-git branch -d task-new-task-20260306-hk
-git push origin --delete task-new-task-20260306-hk
+      # 5. (Optional – delete the branch)
+      git branch -d new-branch
+      git push origin --delete new-branch
    
 ## When Things Go Wrong
 
