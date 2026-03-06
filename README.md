@@ -7,9 +7,9 @@ Follow this routine **every single time** you work on the project to keep everyt
 - If you make changes directly on the robot, transfer them back to your PC, then commit and push from there.
 - Why? This ensures all changes are tracked in Git on the PC, prevents desyncs, and maintains a clean history on GitHub.
 
-# Step-by-Step Routine
+## Step-by-Step Routine
 
-## Part A. Pure Programming
+### Part A. Pure Programming
 
 1. **Open Visual Studio Code**
    - Open VS Code -> choose "open folder" -> choose the folder containing the repository
@@ -42,7 +42,7 @@ Follow this routine **every single time** you work on the project to keep everyt
      ```
       - If push rejected (non-fast-forward), it means someone else pushed meanwhile. Git pull again, resolve, then push.
     
-## Part B. Testing on Robot
+### Part B. Testing on Robot
 
 1. **Start session – on PC**
    - Pull from github (follow the steps in A1)
@@ -58,6 +58,49 @@ Follow this routine **every single time** you work on the project to keep everyt
 
 5. **Back on PC – commit changes**
    - Push to github (follow the steps in A4).
+  
+3. Branching & Merging Strategy
+Rule of thumb: One branch per meaningful piece of work / robot session
+Naming Convention (recommended)
+texttype/short-description-YYYYMMDD-initials
+Examples:
+
+task-pick-cube-20260306-hk
+experiment/vision-only-grasp-20260307-jl
+feature/add-force-torque-sensor-20260308-team
+fix/joint-limit-bug-20260309-hk
+
+Creating a new branch
+Bash# From up-to-date main (safest)
+git checkout main
+git pull origin main
+
+git checkout -b task-new-task-20260306-hk
+Working on branch
+
+Commit often (small logical changes)
+Push regularly so others can see progress:Bashgit push origin task-new-task-20260306-hk
+
+Finishing & Merging
+When the task/experiment is successful/stable and reviewed:
+Bash# 1. Make sure branch is up-to-date
+git checkout task-new-task-20260306-hk
+git pull origin task-new-task-20260306-hk
+
+# 2. Switch to target branch (usually main)
+git checkout main
+git pull origin main
+
+# 3. Merge (use --no-ff to keep history clear)
+git merge task-new-task-20260306-hk --no-ff
+# resolve conflicts if any
+
+# 4. Push integrated result
+git push origin main
+
+# 5. (Optional – cleanup)
+git branch -d task-new-task-20260306-hk
+git push origin --delete task-new-task-20260306-hk
    
 ## When Things Go Wrong
 
