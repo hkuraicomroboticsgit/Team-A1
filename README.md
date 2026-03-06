@@ -79,26 +79,33 @@ Rule of thumb: One branch per meaningful piece of work (eg. 1 training session h
 
 4. Finishing & Merging
    - When the task is completed and reviewed, merge back to main
-     ```bash
-     # 1. Make sure branch is up-to-date
-     git checkout new-branch
-     git pull origin tnew-branch
+   Make sure branch is up-to-date
+   ```bash
+   git checkout new-branch
+   git pull origin tnew-branch
+   ```
+   
+   Switch to target branch (usually main)
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+   
+   Merge (use --no-ff to keep history clear)
+   ```bash
+   git merge new-branch --no-ff
+   ```
+   - resolve conflicts if any
+   
+   Push integrated result
+   ```bash
+   git push origin main
 
-     # 2. Switch to target branch (usually main)
-     git checkout main
-     git pull origin main
-
-     # 3. Merge (use --no-ff to keep history clear)
-     git merge new-branch --no-ff
-     # resolve conflicts if any
-      
-     # 4. Push integrated result
-     git push origin main
-
-     # 5. (Optional – delete the branch)
-     git branch -d new-branch
-     git push origin --delete new-branch
-     ```
+   (Optional – delete the branch)
+   ```bash
+   git branch -d new-branch
+   git push origin --delete new-branch
+   ```
    
 ## When Things Go Wrong
 
